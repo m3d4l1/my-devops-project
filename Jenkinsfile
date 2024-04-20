@@ -1,5 +1,6 @@
-class HelloWorld {
-    static void main(String[] args) {
-        println("Hello, world!")
-    }
+def greet(name) {
+    return "Hello, $name!"
 }
+
+def message = greet("John")
+println message

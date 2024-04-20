@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Récupération du code source depuis le dépôt Git
-                git 'https://github.com/m3d4l1/my-devops-project/Jenkinsfile1(sysdate&cs).git'
+                git 'https://github.com/m3d4l1/my-devops-project.git'
             }
         }
         

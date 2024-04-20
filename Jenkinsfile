@@ -1,5 +1,11 @@
-class HelloWorld {
-    static void main(String[] args) {
-        println("Hello, world!")
+pipeline {
+    agent any
+ 
+    stages {
+        stage('Hello') {
+            steps {
+                echo "Hello, world!"
+            }
+        }
     }
 }

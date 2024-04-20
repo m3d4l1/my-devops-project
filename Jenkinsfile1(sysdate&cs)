@@ -1,27 +1,15 @@
 pipeline {
     agent any
- 
+    
     triggers {
-        // Déclenche le build uniquement lorsqu'un push est détecté dans Git
-        scm '*/5 * * * *' // Vérifie les modifications toutes les 5 minutes
+        pollSCM '*/5 * * * *' // Checks for changes every 5 minutes
     }
- 
+    
     stages {
-        stage('Checkout') {
+        stage('Hello') {
             steps {
-                // Récupération du code source depuis le référentiel Git
-                git 'https://github.com/votre-utilisateur/votre-projet.git'
+                echo 'Hello, world!'
             }
         }
-        stage('Affichage de la date système') {
-            steps {
-                // Affichage de la date système
-                script {
-                    def date = sh(script: 'date', returnStdout: true).trim()
-                    echo "La date système est : ${date}"
-                }
-            }
-        }
-        // Ajoutez d'autres étapes de votre pipeline ici
     }
 }

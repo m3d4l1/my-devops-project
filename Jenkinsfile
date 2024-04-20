@@ -1,11 +1,28 @@
 pipeline {
     agent any
     
+    triggers {
+        githubPush() // Déclenche le build lors d'un push dans le dépôt Git
+    }
+    
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello, world!'
+                // Récupération du code source depuis le dépôt Git
+                git 'https://github.com/m3d4l1/my-devops-project.git'
             }
         }
+        
+        stage('Display Date') {
+            steps {
+                // Affichage de la date système
+                script {
+                    def currentDate = sh(script: 'date', returnStdout: true).trim()
+                    echo "Current Date: ${currentDate}"
+                }
+            }
+        }
+        
+        // Ajoutez d'autres étapes de construction, de test, de déploiement, etc. selon vos besoins
     }
 }
